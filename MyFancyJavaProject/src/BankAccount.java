@@ -36,5 +36,11 @@ System.out.println("Balance before deposit: " + account.balance);
 account.deposit(2000);
 // Print balance
 System.out.println("Balance after deposit: " + account.balance);
+
+BankAccount account2 = new BankAccount();
+account2.name = "hamim";
+account2.id = "654654";
+account2.balance = 5000;
+        
 }
 }
