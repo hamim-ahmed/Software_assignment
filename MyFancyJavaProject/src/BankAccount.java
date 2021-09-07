@@ -10,9 +10,22 @@
  */
 public class BankAccount {
 // Instance variables
+private static BankAccount instance = null;
 public String name;
 public String id;
 public double balance;
+
+private BankAccount(String n,String i, int bal){
+    this.name = n;
+    this.id = i;
+    this.balance = bal;
+}
+public static BankAccount getbankaccount(String n,String i,int bal){      //for singleton pattern.
+    if(instance == null){
+        instance = new BankAccount(n,i,bal);
+    }
+    return instance;
+}
 // Methods
 public void deposit(double amount){
 balance = balance + amount;
@@ -25,16 +38,13 @@ balance -= amount;
 class TestBankAccount {
 public static void main(String[] args) {
 // Creating objects
-BankAccount account = new BankAccount();
+BankAccount account = BankAccount.getbankaccount("KHAN","0123456",2000);
 // Assigning values to instance variables
-account.name = "Rashid";
-account.id = "1000500";
-account.balance = 1000;
-// Print balance
 System.out.println("Balance before deposit: " + account.balance);
-// Calling methods
 account.deposit(2000);
-// Print balance
 System.out.println("Balance after deposit: " + account.balance);
+// Print balance
+BankAccount account1 = BankAccount.getbankaccount("hamim","1357",500);
+System.out.println("balance: " + account1.balance );  //this object will get the previous object that already exit....so information will not be updated.
 }
 }
